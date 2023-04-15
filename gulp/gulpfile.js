@@ -33,6 +33,10 @@ function images() {
     .pipe(dest('../dist/images'));
 }
 
+function javascript() {
+  return src('../src/js/**/*')
+    .pipe(dest('../dist/js'));
+}
 function watchFiles() {
   browserSync.init({
     server: {
@@ -41,10 +45,12 @@ function watchFiles() {
   });
   watch('../src/scss/**/*.scss', styles);
   watch('../src/images/**/*', images);
+  watch('../src/js/**/*.js', javascript);
   watch('../dist/**/*.html').on('change', browserSync.reload);
 }
 
 exports.styles = styles;
 exports.images = images;
+exports.javascript = javascript;
 exports.watch = watchFiles;
-exports.default = parallel(styles, images, watchFiles);
+exports.default = parallel(styles, images, javascript, watchFiles);

@@ -1,12 +1,9 @@
-_gulp/node_modules
-_gulp/package-lock.json
+# git対象としないファイル、フォルダを記載する
 
+gulp/node_modules
+gulp/package-lock.json
 
-*.map
-
-!.gitkeep
-
-# OSX
+# Mac
 .DS_Store
 __MACOSX
 thumbs.db
