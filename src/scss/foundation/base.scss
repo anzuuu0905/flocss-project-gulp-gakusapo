@@ -1,0 +1,46 @@
+// inner
+$inner: 1200px;
+
+// 余白
+$padding-pc: 25px;
+$padding-sp: 20px;
+
+// フォント
+$base-font-family: 'Noto Sans JP', sans-serif;
+
+// Color
+$color-black:#333;
+$color-red:#e00;
+
+//メディアクエリー
+// 参考：https://zenn.dev/web_tips/articles/095d7419507ca9
+//ブレイクポイントの設定
+$breakpoints: (
+  "sm": "screen and (min-width: 400px)",
+  "md": "screen and (min-width: 768px)",
+  "lg": "screen and (min-width: 1000px)",
+  "xl": "screen and (min-width: 1200px)",
+);
+//メディアクエリーの設定
+@mixin mq($breakpoint) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+      @content;
+  }
+}
+
+
+body {
+  font-family: $base-font-family;
+  color: $color-black;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.3s;
+  @include mq("md") {
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

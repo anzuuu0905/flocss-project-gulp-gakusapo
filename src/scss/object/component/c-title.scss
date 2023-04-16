@@ -2,5 +2,14 @@
 
 .c-title{
   font-size: 24px;
+  color: black;
+  @include mq(md){
+  color: red;
+  }
+  @include mq(lg){
   color: blue;
+  }
+  @include mq(xl){
+  color: green;
+  }
 }
