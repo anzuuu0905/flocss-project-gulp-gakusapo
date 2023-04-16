@@ -23,11 +23,6 @@ $base-font-size: 16px;
 $color-black:#333;
 $color-red:#e00;
 
-/*****************************************
- * メディアクエリー
- * 参考
- * https://zenn.dev/web_tips/articles/095d7419507ca9
-******************************************/
 // ブレイクポイントの設定
 $breakpoints: (
   "sm": "screen and (min-width: 400px)",
@@ -35,42 +30,47 @@ $breakpoints: (
   "lg": "screen and (min-width: 1000px)",
   "xl": "screen and (min-width: 1200px)",
 );
+/*****************************************
+ * メディアクエリー
+ * 参考
+ * https://zenn.dev/web_tips/articles/095d7419507ca9
+******************************************/
 //メディアクエリーの設定
-@mixin mq($breakpoint) {
-  @media #{map-get($breakpoints, $breakpoint)} {
-      @content;
-  }
-}
+// @mixin mq($breakpoint) {
+//   @media #{map-get($breakpoints, $breakpoint)} {
+//       @content;
+//   }
+// }
 
-/*****************************************
- * 数値から単位を取り除く
- * 参考
- * https: //css-tricks.com/snippets/sass/
-******************************************/
-@function strip-unit($number) {
-  @if type-of($number)=="number" and not unitless($number) {
-    @return math.div($number, $number * 0 + 1);
-  }
+// /*****************************************
+//  * 数値から単位を取り除く
+//  * 参考
+//  * https: //css-tricks.com/snippets/sass/
+// ******************************************/
+// @function strip-unit($number) {
+//   @if type-of($number)=="number" and not unitless($number) {
+//     @return math.div($number, $number * 0 + 1);
+//   }
 
-  @return $number;
-}
+//   @return $number;
+// }
 
-/*****************************************
- * px→remの計算
- * 参考
- * https: //webdou.net/sass-rem/
- * Sassではmath.div関数の使用が推奨のため、スラッシュ(/)演算子から変更
-******************************************/
-@function rem($pixels) {
-  @return math.div($pixels , strip-unit($base-font-size)) * 1rem;
-}
+// /*****************************************
+//  * px→remの計算
+//  * 参考
+//  * https: //webdou.net/sass-rem/
+//  * Sassではmath.div関数の使用が推奨のため、スラッシュ(/)演算子から変更
+// ******************************************/
+// @function rem($pixels) {
+//   @return math.div($pixels , strip-unit($base-font-size)) * 1rem;
+// }
 
-/*****************************************
- * vwの計算
- * 参考
- * https://webdou.net/sass-vw/
- * Sassではmath.div関数の使用が推奨のため、スラッシュ(/)演算子から変更
-******************************************/
-@function vw($screen-size, $pixels) {
-  @return math.div($pixels , $screen-size) * 100vw;
-}
+// /*****************************************
+//  * vwの計算
+//  * 参考
+//  * https://webdou.net/sass-vw/
+//  * Sassではmath.div関数の使用が推奨のため、スラッシュ(/)演算子から変更
+// ******************************************/
+// @function vw($screen-size, $pixels) {
+//   @return math.div($pixels , $screen-size) * 100vw;
+// }
