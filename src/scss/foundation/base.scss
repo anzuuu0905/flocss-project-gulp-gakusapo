@@ -1,20 +1,28 @@
+@use "sass:math";
+
 // inner
 $inner: 1200px;
 
 // 余白
-$padding-pc: 25px;
-$padding-sp: 20px;
+$padding-pc: 25px; // PC用余白設定
+$padding-sp: 20px; // スマホ用余白設定
 
 // フォント
-$base-font-family: 'Noto Sans JP', sans-serif;
+$font-family-base: 'Noto Sans JP', sans-serif; // ベースフォント設定
+
+// ベースフォントサイズ
+$base-font-size: 16px;
 
 // Color
 $color-black:#333;
 $color-red:#e00;
 
-//メディアクエリー
-// 参考：https://zenn.dev/web_tips/articles/095d7419507ca9
-//ブレイクポイントの設定
+/*****************************************
+ * メディアクエリー
+ * 参考
+ * https://zenn.dev/web_tips/articles/095d7419507ca9
+******************************************/
+// ブレイクポイントの設定
 $breakpoints: (
   "sm": "screen and (min-width: 400px)",
   "md": "screen and (min-width: 768px)",
@@ -28,9 +36,61 @@ $breakpoints: (
   }
 }
 
+/*****************************************
+ * 数値から単位を取り除く
+ * 参考
+ * https: //css-tricks.com/snippets/sass/
+******************************************/
+@function strip-unit($number) {
+  @if type-of($number)=="number" and not unitless($number) {
+    @return math.div($number, $number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+/*****************************************
+ * px→remの計算
+ * 参考
+ * https: //webdou.net/sass-rem/
+ * Sassではmath.div関数の使用が推奨のため、スラッシュ(/)演算子から変更
+******************************************/
+@function rem($pixels) {
+  @return math.div($pixels , strip-unit($base-font-size)) * 1rem;
+}
+
+/*****************************************
+ * vwの計算
+ * 参考
+ * https://webdou.net/sass-vw/
+ * Sassではmath.div関数の使用が推奨のため、スラッシュ(/)演算子から変更
+******************************************/
+@function vw($screen-size, $pixels) {
+  @return math.div($pixels , $screen-size) * 100vw;
+}
+
+html {
+  // 375px以下
+  @media (max-width: 375px) {
+    font-size: vw(375, strip-unit($base-font-size));
+  }
+
+  // 375px〜787px
+  font-size: $base-font-size;
+
+  // 788px〜inner
+  @include mq("md") {
+    font-size: vw(strip-unit($inner), strip-unit($base-font-size));
+  }
+
+  //inner以上
+  @media (min-width: $inner) {
+    font-size: $base-font-size;
+  }
+}
 
 body {
-  font-family: $base-font-family;
+  font-family: $font-family-base;
   color: $color-black;
 }
 

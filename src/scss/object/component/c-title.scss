@@ -1,7 +1,7 @@
-@use '../../foundation/_index' as *;
+@use 'foundation' as *;
 
 .c-title{
-  font-size: 24px;
+  font-size: rem(24);
   color: black;
   @include mq(md){
   color: red;

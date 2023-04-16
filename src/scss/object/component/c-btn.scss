@@ -1,4 +1,4 @@
-@use '../../foundation/_index' as *;
+@use 'foundation' as *;
 
 .c-btn {
   background-color: #007bff;
@@ -6,8 +6,8 @@
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
-  font-size: 16px;
-  padding: 10px 20px;
+  font-size: rem(16);
+  padding: rem(10) rem(20);
   text-align: center;
   text-decoration: none;
   display: inline-block;
