@@ -8,10 +8,10 @@ html {
     font-size: vw(375, strip-unit($base-font-size));
   }
 
-  // 375px〜787px
+  // 375px〜767px
   font-size: $base-font-size;
 
-  // 788px〜inner
+  // 768px〜inner
   @include mq("md") {
     font-size: vw(strip-unit($inner), strip-unit($base-font-size));
   }
