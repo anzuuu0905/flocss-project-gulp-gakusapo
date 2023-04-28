@@ -1,5 +1,25 @@
 @use "sass:math";
 
+// ブレイクポイントの設定
+$break-flg: 1 !default; //0:SPファースト、1：PCファースト
+$breakpoints: null;
+@if $break-flg == 0 {
+  $breakpoints: (
+    "sm": "screen and (min-width: 400px)",
+    "md": "screen and (min-width: 768px)",
+    "lg": "screen and (min-width: 1000px)",
+    "xl": "screen and (min-width: 1200px)",
+  );
+} @else {
+  // ブレイクポイントの設定
+  $breakpoints: (
+    "sm": "screen and (max-width: 399px)",
+    "md": "screen and (max-width: 767px)",
+    "lg": "screen and (max-width: 999px)",
+    "xl": "screen and (max-width: 1199px)",
+  );
+}
+
 // inner
 $inner: 1200px;
 
@@ -22,11 +42,3 @@ $base-font-size: 16px;
 // Color
 $color-black:#333;
 $color-red:#e00;
-
-// ブレイクポイントの設定
-$breakpoints: (
-  "sm": "screen and (min-width: 400px)",
-  "md": "screen and (min-width: 768px)",
-  "lg": "screen and (min-width: 1000px)",
-  "xl": "screen and (min-width: 1200px)",
-);
