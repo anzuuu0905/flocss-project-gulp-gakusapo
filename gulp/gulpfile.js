@@ -17,7 +17,7 @@ function styles() {
     .pipe(sassGlob())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
-    .pipe(cleanCSS())
+    // .pipe(cleanCSS())  //cssの圧縮を行う
     .pipe(sourcemaps.write('.'))
     .pipe(dest('../dist/css'))
     .pipe(browserSync.stream());
