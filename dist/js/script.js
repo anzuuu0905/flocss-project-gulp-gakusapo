@@ -1,4 +1,3 @@
-
 jQuery(function ($) { // $はjQueryを表す
 // この中にコードを書く
 
