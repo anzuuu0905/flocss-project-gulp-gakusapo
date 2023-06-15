@@ -19,15 +19,15 @@
 }@else{
   .c-title{
     font-size: rem(24);
-    color: black;
-    @include mq(xl){
     color: green;
-    }
-    @include mq(lg){
+    @include mq(xl){
     color: blue;
     }
-    @include mq(md){
+    @include mq(lg){
     color: red;
+    }
+    @include mq(md){
+    color: black;
     }
   }
 }
