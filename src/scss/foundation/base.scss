@@ -4,13 +4,13 @@
 
 html {
   @if $break-flg == 0 {
+    // 375px〜767px
+    font-size: $base-font-size;
+
     // 375px以下
     @media (max-width: 375px) {
       font-size: vw(375, strip-unit($base-font-size));
     }
-
-    // 375px〜767px
-    font-size: $base-font-size;
 
     // 768px〜inner
     @include mq("md") {
